@@ -92,5 +92,26 @@ Ext.define('Traccar.view.map.MapController', {
 
     zoomToAllDevices: function () {
         this.zoomToAllPositions(Ext.getStore('LatestPositions').getData().items);
+    },
+
+    onMyReportPeriodChange: function(combobox, newValue, oldValue) {
+        var deviceId;
+        var from, to;
+
+        window.alert(newValue);
+        // ID urządzenia Sony Xperia Tipo ST21i,
+        deviceId = 1;
+
+        from = new Date('2018-04-02');
+        to = new Date('2018-04-06');
+        Ext.getStore('ReportRoute').removeAll();
+        Ext.getStore('ReportRoute').showMarkers = true;
+        Ext.getStore('ReportRoute').load({
+            params: {
+                deviceId: deviceId,
+                from: from.toISOString(),
+                to: to.toISOString()
+            }
+        });
     }
 });
