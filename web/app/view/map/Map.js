@@ -42,6 +42,16 @@ Ext.define('Traccar.view.map.Map', {
             xtype: 'tbtext',
             html: Strings.mapTitle,
             baseCls: 'x-panel-header-title-default'
+        }, '-', {
+            xtype: 'combobox',
+            reference: 'myReportPeriodField',
+            store: 'MyReportPeriods',
+            displayField: 'name',
+            valueField: 'key',
+            editable: false,
+            listeners: {
+                change: 'onMyReportPeriodChange'
+            }
         }, {
             xtype: 'tbfill'
         }, {
