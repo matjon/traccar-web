@@ -99,11 +99,49 @@ Ext.define('Traccar.view.map.MapController', {
         var from, to;
 
         window.alert(newValue);
-        // ID urządzenia Sony Xperia Tipo ST21i,
+        // TODO: ID urządzenia Sony Xperia Tipo ST21i,
         deviceId = 1;
 
-        from = new Date('2018-04-02');
-        to = new Date('2018-04-06');
+        // code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
+            from = new Date();
+            to = new Date();
+            switch (newValue) {
+                case 'today':
+                    to.setDate(to.getDate() + 1);
+                    break;
+                case 'yesterday':
+                    from.setDate(to.getDate() - 1);
+                    break;
+                case 'thisWeek':
+                    day = from.getDay();
+                    first = from.getDate() - day + (day === 0 ? -6 : 1);
+                    from.setDate(first);
+                    to.setDate(first + 7);
+                    break;
+                case 'previousWeek':
+                    day = from.getDay();
+                    first = from.getDate() - day + (day === 0 ? -6 : 1);
+                    from.setDate(first - 7);
+                    to.setDate(first);
+                    break;
+                case 'thisMonth':
+                    from.setDate(1);
+                    to.setDate(1);
+                    to.setMonth(from.getMonth() + 1);
+                    break;
+                case 'previousMonth':
+                    from.setDate(1);
+                    from.setMonth(from.getMonth() - 1);
+                    to.setDate(1);
+                    break;
+                default:
+                    break;
+            }
+            from.setHours(0, 0, 0, 0);
+            to.setHours(0, 0, 0, 0);
+
+        // end of code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
+
         Ext.getStore('ReportRoute').removeAll();
         Ext.getStore('ReportRoute').showMarkers = true;
         Ext.getStore('ReportRoute').load({
@@ -113,5 +151,10 @@ Ext.define('Traccar.view.map.MapController', {
                 to: to.toISOString()
             }
         });
+
+	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
+        //
+        // EDIT: czw, 5 kwi 2018, 23:23:51 CEST
+        // TODO: trzeba aktualizować rysunek po wyborze innego urządzenia,
     }
 });
