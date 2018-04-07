@@ -77,6 +77,7 @@
     "sharedShowAddress": "Show Address",
     "sharedDisabled": "Disabled",
     "sharedAboutTraccar": "About Traccar",
+    "sharedRefresh": "Refresh",
     "attributeSpeedLimit": "Speed Limit",
     "attributeReportIgnoreOdometer": "Report: Ignore Odometer",
     "attributeMaintenanceStart": "Maintenance: Start",

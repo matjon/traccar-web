@@ -61,7 +61,7 @@ Ext.define('Traccar.view.map.Map', {
             stateful: false,
             enableToggle: false,
             // tooltip: 'Odśwież',
-            text: 'Odśwież'
+            text: Strings.sharedRefresh
         }, {
             xtype: 'tbfill'
         }, {
