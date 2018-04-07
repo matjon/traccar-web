@@ -28,7 +28,11 @@ Ext.define('Traccar.view.map.MapController', {
             controller: {
                 '*': {
                     mapstaterequest: 'getMapState',
-                    zoomtoalldevices: 'zoomToAllDevices'
+                    zoomtoalldevices: 'zoomToAllDevices',
+                    selectdevice: 'selectDevice',
+                    selectreport: 'selectReport',
+                    selectevent: 'selectEvent',
+                    deselectfeature: 'deselectFeature'
                 }
             },
             store: {
@@ -94,13 +98,40 @@ Ext.define('Traccar.view.map.MapController', {
         this.zoomToAllPositions(Ext.getStore('LatestPositions').getData().items);
     },
 
+    //HACK
+    selectDevice: function (device, center) {
+            this.selectedDevice = device;
+    },
+
+    selectReport: function (position, center) {
+    },
+
+    selectEvent: function (position) {
+    },
+
+    deselectFeature: function () {
+            this.selectedDevice = null;
+    },
+
     onMyReportPeriodChange: function(combobox, newValue, oldValue) {
+        // function based on view/ReportController.js -> onReportClick(button)
         var deviceId;
         var from, to;
 
-        window.alert(newValue);
-        // TODO: ID urządzenia Sony Xperia Tipo ST21i,
-        deviceId = 1;
+        /* var devices_grid = Ext.getCmp('devicesView');
+        if (devices_grid) {
+                window.alert("devicesView found");
+        } else {
+                window.alert("devicesView not found");
+        } */
+
+        deviceId = null;
+        if (this.selectedDevice && this.selectedDevice !== null) {
+                deviceId = this.selectedDevice.id;
+        } else {
+                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
+                return;
+        }
 
         // code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
             from = new Date();
