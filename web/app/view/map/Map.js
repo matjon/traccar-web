@@ -48,7 +48,9 @@ Ext.define('Traccar.view.map.Map', {
             store: 'MyReportPeriods',
             displayField: 'name',
             valueField: 'key',
+            value: 'today',
             editable: false,
+            forceSelection: true,
             listeners: {
                 change: 'onMyReportPeriodChange'
             }
