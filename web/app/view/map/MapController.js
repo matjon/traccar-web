@@ -52,6 +52,7 @@ Ext.define('Traccar.view.map.MapController', {
             Traccar.app.isMobile() && !Traccar.app.getBooleanAttributePreference('ui.disableReport'));
         this.lookupReference('showEventsButton').setVisible(
             Traccar.app.isMobile() && !Traccar.app.getBooleanAttributePreference('ui.disableEvents'));
+        this.setTimes('today');
     },
 
     showReports: function () {
@@ -100,7 +101,13 @@ Ext.define('Traccar.view.map.MapController', {
 
     //HACK
     selectDevice: function (device, center) {
-            this.selectedDevice = device;
+        this.selectedDevice = device;
+        if (device && device !== null) {
+            var deviceId;
+            deviceId = this.selectedDevice.id;
+            this.displayDeviceHistory(deviceId);
+        }
+
     },
 
     selectReport: function (position, center) {
@@ -194,19 +201,13 @@ Ext.define('Traccar.view.map.MapController', {
 
 	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
         //
-        // EDIT: czw, 5 kwi 2018, 23:23:51 CEST
-        // TODO: trzeba aktualizować rysunek po wyborze innego urządzenia,
-        //
         // EDIT: sob, 7 kwi 2018, 15:13:32 CEST
         // TODO: domyślny wybór pierwszego urządzenia na liście po lewej stronie,
-        //
         //
         // EDIT: sob, 7 kwi 2018, 15:19:40 CEST
         // ISTOTNE
         // TODO: nowe opcje: w ostatnim miesiącu, w ostatnim tygodniu
         //      - poza "W tym tygodniu", "W poprzednim tygodniu",
-        //
-        //
         //
         //EDIT: sob, 7 kwi 2018, 15:28:04 CEST
         //ISTOTNE
@@ -215,6 +216,11 @@ Ext.define('Traccar.view.map.MapController', {
         //
         //      EDIT: sob, 7 kwi 2018, 15:28:27 CEST
         //      nic teraz,
+        //
+        //
+        //EDIT: sob, 7 kwi 2018, 16:56:22 CEST
+        //ISTOTNE
+        //- pamiętać o używaniu this, np. this.displayDeviceHistory(),
         //
     }
 });
