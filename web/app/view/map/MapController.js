@@ -179,7 +179,6 @@ Ext.define('Traccar.view.map.MapController', {
 
     onMyReportPeriodChange: function(combobox, newValue, oldValue) {
         // function based on view/ReportController.js -> onReportClick(button)
-        var deviceId;
 
         /* var devices_grid = Ext.getCmp('devicesView');
         if (devices_grid) {
@@ -189,15 +188,7 @@ Ext.define('Traccar.view.map.MapController', {
         } */
         this.setTimes(newValue);
 
-        deviceId = null;
-        if (this.selectedDevice && this.selectedDevice !== null) {
-                deviceId = this.selectedDevice.id;
-        } else {
-                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
-                return;
-        }
-
-        this.displayDeviceHistory(deviceId);
+        this.myRefresh();
 
 	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
         //
@@ -209,18 +200,22 @@ Ext.define('Traccar.view.map.MapController', {
         // TODO: nowe opcje: w ostatnim miesiącu, w ostatnim tygodniu
         //      - poza "W tym tygodniu", "W poprzednim tygodniu",
         //
-        //EDIT: sob, 7 kwi 2018, 15:28:04 CEST
-        //ISTOTNE
-        //- muszę dać przycisk "Odśwież"
-        //      - bo wykres się nie aktualizuje na bieżąco,
-        //
-        //      EDIT: sob, 7 kwi 2018, 15:28:27 CEST
-        //      nic teraz,
-        //
-        //
         //EDIT: sob, 7 kwi 2018, 16:56:22 CEST
         //ISTOTNE
         //- pamiętać o używaniu this, np. this.displayDeviceHistory(),
         //
+    },
+
+    myRefresh: function() {
+        var deviceId = null;
+
+        if (this.selectedDevice && this.selectedDevice !== null) {
+                deviceId = this.selectedDevice.id;
+        } else {
+                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
+                return;
+        }
+
+        this.displayDeviceHistory(deviceId);
     }
 });

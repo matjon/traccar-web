@@ -55,6 +55,14 @@ Ext.define('Traccar.view.map.Map', {
                 change: 'onMyReportPeriodChange'
             }
         }, {
+            handler: 'myRefresh',
+            reference: 'myRefreshButton',
+            //glyph: 'xf0f6@FontAwesome',
+            stateful: false,
+            enableToggle: false,
+            // tooltip: 'Odśwież',
+            text: 'Odśwież'
+        }, {
             xtype: 'tbfill'
         }, {
             handler: 'showReports',
