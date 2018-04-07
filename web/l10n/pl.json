@@ -242,6 +242,7 @@
     "mapShapeCircle": "Okrąg",
     "mapShapePolyline": "Krzywa",
     "mapLiveRoutes": "Ścieżki na żywo",
+    "mapPleaseChooseDevice": "Najpierw, proszę, wybierz urządzenie po lewej stronie!",
     "stateTitle": "Stan i lokalizacja",
     "stateName": "Właściwość",
     "stateValue": "Wartość",

@@ -212,7 +212,7 @@ Ext.define('Traccar.view.map.MapController', {
         if (this.selectedDevice && this.selectedDevice !== null) {
                 deviceId = this.selectedDevice.id;
         } else {
-                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
+                window.alert(Strings.mapPleaseChooseDevice);
                 return;
         }
 
