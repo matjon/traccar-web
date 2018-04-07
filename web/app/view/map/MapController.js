@@ -113,30 +113,12 @@ Ext.define('Traccar.view.map.MapController', {
             this.selectedDevice = null;
     },
 
-    onMyReportPeriodChange: function(combobox, newValue, oldValue) {
-        // function based on view/ReportController.js -> onReportClick(button)
-        var deviceId;
+    setTimes: function(key) {
         var from, to;
-
-        /* var devices_grid = Ext.getCmp('devicesView');
-        if (devices_grid) {
-                window.alert("devicesView found");
-        } else {
-                window.alert("devicesView not found");
-        } */
-
-        deviceId = null;
-        if (this.selectedDevice && this.selectedDevice !== null) {
-                deviceId = this.selectedDevice.id;
-        } else {
-                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
-                return;
-        }
-
         // code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
             from = new Date();
             to = new Date();
-            switch (newValue) {
+            switch (key) {
                 case 'today':
                     to.setDate(to.getDate() + 1);
                     break;
@@ -172,14 +154,37 @@ Ext.define('Traccar.view.map.MapController', {
             to.setHours(0, 0, 0, 0);
 
         // end of code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
+        this.from = from;
+        this.to = to;
+    },
+
+    onMyReportPeriodChange: function(combobox, newValue, oldValue) {
+        // function based on view/ReportController.js -> onReportClick(button)
+        var deviceId;
+
+        /* var devices_grid = Ext.getCmp('devicesView');
+        if (devices_grid) {
+                window.alert("devicesView found");
+        } else {
+                window.alert("devicesView not found");
+        } */
+        this.setTimes(newValue);
+
+        deviceId = null;
+        if (this.selectedDevice && this.selectedDevice !== null) {
+                deviceId = this.selectedDevice.id;
+        } else {
+                window.alert("Najpierw wybierz urządzenie po lewej stronie!");
+                return;
+        }
 
         Ext.getStore('ReportRoute').removeAll();
         Ext.getStore('ReportRoute').showMarkers = true;
         Ext.getStore('ReportRoute').load({
             params: {
                 deviceId: deviceId,
-                from: from.toISOString(),
-                to: to.toISOString()
+                from: this.from.toISOString(),
+                to: this.to.toISOString()
             }
         });
 
@@ -187,5 +192,16 @@ Ext.define('Traccar.view.map.MapController', {
         //
         // EDIT: czw, 5 kwi 2018, 23:23:51 CEST
         // TODO: trzeba aktualizować rysunek po wyborze innego urządzenia,
+        //
+        // EDIT: sob, 7 kwi 2018, 15:13:32 CEST
+        // TODO: domyślny wybór pierwszego urządzenia na liście po lewej stronie,
+        //
+        //
+        // EDIT: sob, 7 kwi 2018, 15:19:40 CEST
+        // ISTOTNE
+        // TODO: nowe opcje: w ostatnim miesiącu, w ostatnim tygodniu
+        //      - poza "W tym tygodniu", "W poprzednim tygodniu",
+        //
+        //
     }
 });
