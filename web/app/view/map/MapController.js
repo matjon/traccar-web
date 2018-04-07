@@ -158,6 +158,18 @@ Ext.define('Traccar.view.map.MapController', {
         this.to = to;
     },
 
+    displayDeviceHistory: function(deviceId) {
+        Ext.getStore('ReportRoute').removeAll();
+        Ext.getStore('ReportRoute').showMarkers = true;
+        Ext.getStore('ReportRoute').load({
+            params: {
+                deviceId: deviceId,
+                from: this.from.toISOString(),
+                to: this.to.toISOString()
+            }
+        });
+    }
+
     onMyReportPeriodChange: function(combobox, newValue, oldValue) {
         // function based on view/ReportController.js -> onReportClick(button)
         var deviceId;
@@ -178,15 +190,7 @@ Ext.define('Traccar.view.map.MapController', {
                 return;
         }
 
-        Ext.getStore('ReportRoute').removeAll();
-        Ext.getStore('ReportRoute').showMarkers = true;
-        Ext.getStore('ReportRoute').load({
-            params: {
-                deviceId: deviceId,
-                from: this.from.toISOString(),
-                to: this.to.toISOString()
-            }
-        });
+        displayDeviceHistory(deviceId);
 
 	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
         //
@@ -202,6 +206,15 @@ Ext.define('Traccar.view.map.MapController', {
         // TODO: nowe opcje: w ostatnim miesiącu, w ostatnim tygodniu
         //      - poza "W tym tygodniu", "W poprzednim tygodniu",
         //
+        //
+        //
+        //EDIT: sob, 7 kwi 2018, 15:28:04 CEST
+        //ISTOTNE
+        //- muszę dać przycisk "Odśwież"
+        //      - bo wykres się nie aktualizuje na bieżąco,
+        //
+        //      EDIT: sob, 7 kwi 2018, 15:28:27 CEST
+        //      nic teraz,
         //
     }
 });
