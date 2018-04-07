@@ -190,7 +190,7 @@ Ext.define('Traccar.view.map.MapController', {
                 return;
         }
 
-        displayDeviceHistory(deviceId);
+        this.displayDeviceHistory(deviceId);
 
 	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
         //
