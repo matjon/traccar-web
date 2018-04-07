@@ -168,7 +168,7 @@ Ext.define('Traccar.view.map.MapController', {
                 to: this.to.toISOString()
             }
         });
-    }
+    },
 
     onMyReportPeriodChange: function(combobox, newValue, oldValue) {
         // function based on view/ReportController.js -> onReportClick(button)
