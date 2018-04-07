@@ -245,6 +245,7 @@
     "mapShapeCircle": "Circle",
     "mapShapePolyline": "Polyline",
     "mapLiveRoutes": "Live Routes",
+    "mapPleaseChooseDevice": "Please select device on the left hand side of the screen!",
     "mapPoiLayer": "POI Layer",
     "stateTitle": "State",
     "stateName": "Attribute",
