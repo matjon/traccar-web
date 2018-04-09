@@ -166,6 +166,12 @@ Ext.define('Traccar.view.map.MapController', {
     },
 
     displayDeviceHistory: function(deviceId) {
+        // function based on view/ReportController.js -> onReportClick(button)
+
+        // show a spinner over the map
+        var el = Ext.get('mainMapView');
+        el.mask(Strings.sharedLoading);
+
         Ext.getStore('ReportRoute').removeAll();
         Ext.getStore('ReportRoute').showMarkers = true;
         Ext.getStore('ReportRoute').load({
@@ -173,12 +179,16 @@ Ext.define('Traccar.view.map.MapController', {
                 deviceId: deviceId,
                 from: this.from.toISOString(),
                 to: this.to.toISOString()
+            },
+            scope: this,
+            callback: function(records, operation, success) {
+                // hide the spinner
+                el.unmask();
             }
         });
     },
 
     onMyReportPeriodChange: function(combobox, newValue, oldValue) {
-        // function based on view/ReportController.js -> onReportClick(button)
 
         /* var devices_grid = Ext.getCmp('devicesView');
         if (devices_grid) {
@@ -190,8 +200,6 @@ Ext.define('Traccar.view.map.MapController', {
 
         this.myRefresh();
 
-	// TODO: trzeba dodać ekran "ładowania", bo dane pojawiają się z pewnym opóźnieniem,
-        //
         // EDIT: sob, 7 kwi 2018, 15:13:32 CEST
         // TODO: domyślny wybór pierwszego urządzenia na liście po lewej stronie,
         //
