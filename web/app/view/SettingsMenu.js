@@ -97,6 +97,11 @@ Ext.define('Traccar.view.SettingsMenu', {
             handler: 'onCommandsClick',
             reference: 'settingsCommandsButton'
         }, {
+            text: Strings.sharedAboutTraccar,
+            glyph: 'xf05a@FontAwesome',
+            handler: 'onAboutClick',
+            reference: 'aboutButton'
+        }, {
             text: Strings.loginLogout,
             glyph: 'xf08b@FontAwesome',
             handler: 'onLogoutClick'
