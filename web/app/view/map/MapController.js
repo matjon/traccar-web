@@ -180,8 +180,7 @@ Ext.define('Traccar.view.map.MapController', {
                 from: this.from.toISOString(),
                 to: this.to.toISOString()
             },
-            scope: this,
-            callback: function(records, operation, success) {
+            callback: function() {
                 // hide the spinner
                 el.unmask();
             }
