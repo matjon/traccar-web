@@ -1,3 +1,7 @@
+# This file is used also in scripts/prepare_source.sh as a list of files for
+# zip to exclude. Note that zip pattern rules are slightly different then
+# git's (see below).
+#
 .project
 .settings
 .tern-project
@@ -8,5 +12,12 @@ sencha-error-*
 node_modules
 package-lock.json
 
-.*.swp
+# We need to specify it twice because of zip.
+traccar_source_code.zip
+web/traccar_source_code.zip
+
+# Must not be prepended with a dot (".*.swp") because zip will ignore this
+# rule otherwise.
+*.swp
+
 *~
