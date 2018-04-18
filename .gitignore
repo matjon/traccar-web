@@ -13,8 +13,8 @@ node_modules
 package-lock.json
 
 # We need to specify it twice because of zip.
-traccar_source_code.zip
-web/traccar_source_code.zip
+traccarSourceCode.zip
+web/traccarSourceCode.zip
 
 web/LatestGitCommit.js
 

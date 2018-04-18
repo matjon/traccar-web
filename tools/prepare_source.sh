@@ -16,7 +16,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-archiveFilename=traccar_source_code.zip
+archiveFilename=traccarSourceCode.zip
 
 cd $(dirname $0)/..
 rm $archiveFilename 2>/dev/null || true
