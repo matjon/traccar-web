@@ -80,6 +80,6 @@ Ext.define('Traccar.view.dialog.AboutController', {
 
     onSourceCodeClick: function () {
         // based on http://stackoverflow.com/a/1296101
-        window.location.href = '/traccar_source_code.zip';
+        window.location.href = '/traccarSourceCode.zip';
     }
 });
