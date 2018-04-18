@@ -198,19 +198,6 @@ Ext.define('Traccar.view.map.MapController', {
         this.setTimes(newValue);
 
         this.myRefresh();
-
-        // EDIT: sob, 7 kwi 2018, 15:13:32 CEST
-        // TODO: domyślny wybór pierwszego urządzenia na liście po lewej stronie,
-        //
-        // EDIT: sob, 7 kwi 2018, 15:19:40 CEST
-        // ISTOTNE
-        // TODO: nowe opcje: w ostatnim miesiącu, w ostatnim tygodniu
-        //      - poza "W tym tygodniu", "W poprzednim tygodniu",
-        //
-        //EDIT: sob, 7 kwi 2018, 16:56:22 CEST
-        //ISTOTNE
-        //- pamiętać o używaniu this, np. this.displayDeviceHistory(),
-        //
     },
 
     myRefresh: function() {
