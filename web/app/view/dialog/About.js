@@ -87,6 +87,23 @@ Ext.define('Traccar.view.dialog.About', {
         xtype: 'button',
         text: 'Show the text of the GNU General Public License version 3',
         handler: 'onGplClick'
+    /*
+    }, {
+        xtype: 'box',
+        autoEl: {
+                tag: 'a',
+                href: '/traccar_source_code.zip',
+                target: '_blank',
+                html: 'Get source code of the web interface'
+        }
+        */
+    }, {
+        // an empty text label to force buttons to be in different rows,
+        xtype: 'tbtext'
+    }, {
+        xtype: 'button',
+        text: 'Get source code of the web interface',
+        handler: 'onSourceCodeClick'
     }, {
         // HACK: An empty text label to force whitespace
         xtype: 'tbtext',

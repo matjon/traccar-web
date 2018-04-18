@@ -74,5 +74,10 @@ Ext.define('Traccar.view.dialog.AboutController', {
             titleToDisplay: 'List of libraries and components used by Traccar and their license terms'
         });
         dialog.show();
+    },
+
+    onSourceCodeClick: function () {
+        // based on http://stackoverflow.com/a/1296101
+        window.location.href = '/traccar_source_code.zip';
     }
 });
