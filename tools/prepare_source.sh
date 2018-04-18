@@ -16,10 +16,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-archive_filename=traccar_source_code.zip
+archiveFilename=traccar_source_code.zip
 
 cd $(dirname $0)/..
-rm $archive_filename 2>/dev/null || true
+rm $archiveFilename 2>/dev/null || true
 
-zip -r $archive_filename . --exclude .git --exclude @./.gitignore -9
-mv $archive_filename web/
+zip -r $archiveFilename . --exclude .git --exclude @./.gitignore -9
+mv $archiveFilename web/
