@@ -16,6 +16,8 @@ package-lock.json
 traccar_source_code.zip
 web/traccar_source_code.zip
 
+web/LatestGitCommit.js
+
 # Must not be prepended with a dot (".*.swp") because zip will ignore this
 # rule otherwise.
 *.swp
