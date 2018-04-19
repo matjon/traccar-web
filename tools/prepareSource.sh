@@ -21,7 +21,7 @@ archiveFilename=traccarSourceCode.zip
 cd $(dirname $0)/..
 rm $archiveFilename 2>/dev/null || true
 
-zip -r $archiveFilename . --exclude .git --exclude @./.gitignore -9
+zip -r $archiveFilename . --exclude @./.gitignore -9
 
 # Insert ./web/LatestGitCommit.js into archive, which was excluded in
 # .gitignore but we would like to add to the archive nonetheless.

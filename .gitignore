@@ -23,3 +23,8 @@ web/LatestGitCommit.js
 *.swp
 
 *~
+
+# Needed for zip and will do no harm.
+# '.git' is a plain text file if repository functions as a sumbodule.
+.git
+.git/*
