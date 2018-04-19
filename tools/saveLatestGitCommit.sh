@@ -35,5 +35,5 @@ else
         uncommittedChanges=0
 fi
 
-echo "var TraccarLatestGitCommit = $latestCommit"          >  web/LatestGitCommit.js
-echo "var TraccarUncommittedChanges = $uncommittedChanges" >> web/LatestGitCommit.js
+echo "var TraccarLatestGitCommit = $latestCommit;"          >  web/LatestGitCommit.js
+echo "var TraccarUncommittedChanges = $uncommittedChanges;" >> web/LatestGitCommit.js
