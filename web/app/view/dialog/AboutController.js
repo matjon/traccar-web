@@ -32,16 +32,19 @@ Ext.define('Traccar.view.dialog.AboutController', {
         Ext.getCmp('librariesListProj4js').update({proj4jsVersion: proj4.version});
     },
 
-
-    onLibrariesClick: function () {
-        window.alert('Libraries click');
-    },
-
     onGplClick: function () {
         var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
             fileToDisplay: '/LICENSE_GPL.html',
             // Title matches <title> inside LICENSE_GPL.html
             titleToDisplay: 'GNU General Public License v3.0'
+        });
+        dialog.show();
+    },
+
+    onLibrariesClick: function () {
+        var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
+            fileToDisplay: '/LICENSE_LIBRARIES.html',
+            titleToDisplay: 'List of libraries and components used by Traccar and their license terms'
         });
         dialog.show();
     }
