@@ -57,10 +57,8 @@ Ext.define('Traccar.view.map.Map', {
         }, {
             handler: 'myRefresh',
             reference: 'myRefreshButton',
-            //glyph: 'xf0f6@FontAwesome',
             stateful: false,
             enableToggle: false,
-            // tooltip: 'Odśwież',
             text: Strings.sharedRefresh
         }, {
             xtype: 'tbfill'
