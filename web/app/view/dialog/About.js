@@ -86,6 +86,18 @@ Ext.define('Traccar.view.dialog.About', {
         text: 'Show the text of the GNU General Public License version 3',
         handler: 'onGplClick'
     }, {
+        // HACK: An empty text label to force whitespace
+        xtype: 'tbtext',
+        text: '&nbsp;'
+    }, {
+        xtype: 'tbtext',
+        html: 'Parts of this program (most importantly the server code) ' +
+              'are licensed under the Apache License, Version 2.0. <br> &nbsp;'
+    }, {
+        xtype: 'button',
+        text: 'Show the text of the Apache License, Version 2.0',
+        handler: 'onApacheLicenseClick'
+    }, {
         xtype: 'tbtext',
         html: 'This program makes use of many components and libraries, the most important of which are: '
     }, {
