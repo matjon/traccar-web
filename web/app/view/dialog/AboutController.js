@@ -60,6 +60,16 @@ Ext.define('Traccar.view.dialog.AboutController', {
         dialog.show();
     },
 
+    onApacheLicenseClick: function () {
+        var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
+            fileToDisplay: '/LICENSE_APACHE_2_0.txt',
+            // Title matches <title> of
+            //      http://www.apache.org/licenses/LICENSE-2.0.html
+            titleToDisplay: 'Apache License, Version 2.0'
+        });
+        dialog.show();
+    },
+
     onLibrariesClick: function () {
         var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
             fileToDisplay: '/LICENSE_LIBRARIES.html',
