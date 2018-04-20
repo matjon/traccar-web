@@ -30,8 +30,6 @@ Ext.define('Traccar.view.map.MapController', {
                     mapstaterequest: 'getMapState',
                     zoomtoalldevices: 'zoomToAllDevices',
                     selectdevice: 'selectDevice',
-                    selectreport: 'selectReport',
-                    selectevent: 'selectEvent',
                     deselectfeature: 'deselectFeature'
                 }
             },
@@ -99,76 +97,70 @@ Ext.define('Traccar.view.map.MapController', {
         this.zoomToAllPositions(Ext.getStore('LatestPositions').getData().items);
     },
 
-    //HACK
-    selectDevice: function (device, center) {
+    // HACK
+    selectDevice: function (device) {
+        var deviceId;
+
         this.selectedDevice = device;
         if (device && device !== null) {
-            var deviceId;
             deviceId = this.selectedDevice.id;
             this.displayDeviceHistory(deviceId);
         }
-
-    },
-
-    selectReport: function (position, center) {
-    },
-
-    selectEvent: function (position) {
     },
 
     deselectFeature: function () {
-            this.selectedDevice = null;
+        this.selectedDevice = null;
     },
 
-    setTimes: function(key) {
-        var from, to;
-        // code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
-            from = new Date();
-            to = new Date();
-            switch (key) {
-                case 'today':
-                    to.setDate(to.getDate() + 1);
-                    break;
-                case 'yesterday':
-                    from.setDate(to.getDate() - 1);
-                    break;
-                case 'thisWeek':
-                    day = from.getDay();
-                    first = from.getDate() - day + (day === 0 ? -6 : 1);
-                    from.setDate(first);
-                    to.setDate(first + 7);
-                    break;
-                case 'previousWeek':
-                    day = from.getDay();
-                    first = from.getDate() - day + (day === 0 ? -6 : 1);
-                    from.setDate(first - 7);
-                    to.setDate(first);
-                    break;
-                case 'thisMonth':
-                    from.setDate(1);
-                    to.setDate(1);
-                    to.setMonth(from.getMonth() + 1);
-                    break;
-                case 'previousMonth':
-                    from.setDate(1);
-                    from.setMonth(from.getMonth() - 1);
-                    to.setDate(1);
-                    break;
-                default:
-                    break;
-            }
-            from.setHours(0, 0, 0, 0);
-            to.setHours(0, 0, 0, 0);
+    setTimes: function (key) {
+        var from, to, day, first;
 
-        // end of code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
+        // Code copied from view/dialog/ReportConfigController.js -> onPeriodChange()
+        from = new Date();
+        to = new Date();
+        switch (key) {
+            case 'today':
+                to.setDate(to.getDate() + 1);
+                break;
+            case 'yesterday':
+                from.setDate(to.getDate() - 1);
+                break;
+            case 'thisWeek':
+                day = from.getDay();
+                first = from.getDate() - day + (day === 0 ? -6 : 1);
+                from.setDate(first);
+                to.setDate(first + 7);
+                break;
+            case 'previousWeek':
+                day = from.getDay();
+                first = from.getDate() - day + (day === 0 ? -6 : 1);
+                from.setDate(first - 7);
+                to.setDate(first);
+                break;
+            case 'thisMonth':
+                from.setDate(1);
+                to.setDate(1);
+                to.setMonth(from.getMonth() + 1);
+                break;
+            case 'previousMonth':
+                from.setDate(1);
+                from.setMonth(from.getMonth() - 1);
+                to.setDate(1);
+                break;
+            default:
+                break;
+        }
+        from.setHours(0, 0, 0, 0);
+        to.setHours(0, 0, 0, 0);
+
         this.from = from;
         this.to = to;
     },
 
-    displayDeviceHistory: function(deviceId) {
-        // function based on view/ReportController.js -> onReportClick(button)
+    displayDeviceHistory: function (deviceId) {
+        // Function based on view/ReportController.js -> onReportClick(button)
 
-        // show a spinner over the map
+        // Show a spinner over the map
         var el = Ext.get('mainMapView');
         el.mask(Strings.sharedLoading);
 
@@ -180,34 +172,26 @@ Ext.define('Traccar.view.map.MapController', {
                 from: this.from.toISOString(),
                 to: this.to.toISOString()
             },
-            callback: function() {
-                // hide the spinner
+            callback: function () {
+                // Hide the spinner
                 el.unmask();
             }
         });
     },
 
-    onMyReportPeriodChange: function(combobox, newValue, oldValue) {
-
-        /* var devices_grid = Ext.getCmp('devicesView');
-        if (devices_grid) {
-                window.alert("devicesView found");
-        } else {
-                window.alert("devicesView not found");
-        } */
+    onMyReportPeriodChange: function (combobox, newValue) {
         this.setTimes(newValue);
-
         this.myRefresh();
     },
 
-    myRefresh: function() {
+    myRefresh: function () {
         var deviceId = null;
 
         if (this.selectedDevice && this.selectedDevice !== null) {
-                deviceId = this.selectedDevice.id;
+            deviceId = this.selectedDevice.id;
         } else {
-                window.alert(Strings.mapPleaseChooseDevice);
-                return;
+            window.alert(Strings.mapPleaseChooseDevice);
+            return;
         }
 
         this.displayDeviceHistory(deviceId);
