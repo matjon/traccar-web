@@ -109,7 +109,7 @@ Ext.define('Traccar.view.map.MapController', {
     },
 
     deselectFeature: function () {
-        this.selectedDevice = null;
+        //this.selectedDevice = null;
     },
 
     setTimes: function (key) {
