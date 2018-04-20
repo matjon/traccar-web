@@ -58,5 +58,13 @@ Ext.define('Traccar.view.dialog.AboutController', {
             titleToDisplay: 'GNU General Public License v3.0'
         });
         dialog.show();
+    },
+
+    onLibrariesClick: function () {
+        var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
+            fileToDisplay: '/LICENSE_LIBRARIES.html',
+            titleToDisplay: 'List of libraries and components used by Traccar and their license terms'
+        });
+        dialog.show();
     }
 });
