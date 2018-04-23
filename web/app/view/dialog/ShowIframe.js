@@ -18,22 +18,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/* Example use of this class:
+ *          var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
+ *              fileToDisplay: '/LICENSE_GPL.html',
+ *              titleToDisplay: 'GNU General Public License 3.0'
+ *          });
+ *          dialog.show();
+ */
 Ext.define('Traccar.view.dialog.ShowIframe', {
     extend: 'Traccar.view.dialog.Base',
 
     title: 'Empty iframe',
 
     resizable: true,
-
-    /*
-     * Example use of this class:
-     *          var dialog = Ext.create('Traccar.view.dialog.ShowIframe', {
-     *              fileToDisplay: '/LICENSE_GPL.html',
-     *              titleToDisplay: 'GNU General Public License 3.0'
-     *          });
-     *          dialog.show();
-     */
-
 
     items: [{
         xtype: 'component',
