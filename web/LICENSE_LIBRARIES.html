@@ -131,30 +131,69 @@ either expressed or implied, of OpenLayers Contributors.
                 
                          Libraries used by ExtJS
 
-                source: ./LICENSE file in ext-6.2.0-gpl.zip
+             The list below is based partially on file ./LICENSE 
+                         inside ext-6.2.0-gpl.zip
 
         ***********************************************************
+
+        Note: file ./LICENSE is imprecise: it does not specify which version of the
+        Apache or BSD licenses is being used.
 -->
 
 <li>
-        <h3>YUI 0.6</h3>
+        <h3>YUI library (The Yahoo! User Interface Library)</h3>
         <p>(Used by ExtJS)</p>
-        <pre>
-        TODO:
-                Library: YUI 0.6 - drag-and-drop code
-                License: BSD
-                Location: http://developer.yahoo.com/yui
-        </pre>
+        <p>Original notice in the <code>./LICENSE</code> file in <code>ext-6.2.0-gpl.zip</code>:</p>
+<blockquote><pre><code>Library: YUI 0.6 - drag-and-drop code
+License: BSD
+Location: http://developer.yahoo.com/yui</code></pre></blockquote>
+        <p>According to notices in source code, several classes are based on code copied from the YUI library, most of which are concerned with drag-and-drop functionality. </p>
+
+        <p><strong>Firstly</strong>, the following classes are based on YUI:</p>
+        <ul>
+                <li><code>Ext.dd.DragDropManager</code> (defined in <code>DragDropManager.js</code>)</li>
+                <li><code>Ext.dd.DragDrop</code>        (defined in <code>DragDrop.js</code>)</li>
+                <li><code>Ext.dd.DD</code>              (defined in <code>DD.js</code>)</li>
+                <li><code>Ext.dd.DDProxy</code>         (defined in <code>DDProxy.js</code>)</li>
+                <li><code>Ext.dd.DDTarget</code>        (defined in <code>DDTarget.js</code>)</li>
+        </ul>
+        <p>These classes can be found in the <code>./classic/classic/src/dd/</code> directory in ExtJS sources and have the following notice in their header:<p>
+<blockquote><pre><code>/*
+ * This is a derivative of the similarly named class in the YUI Library.
+ * The original license:
+ * Copyright (c) 2006, Yahoo! Inc. All rights reserved.
+ * Code licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ */</code></pre></blockquote>
+
+        <p><strong>Secondly</strong>, there is a notice in class <code>Ext.env.Ready</code> (defined in <code>packages/core/src/env/Ready.js</code>) that some code has been copied from YUI: </p>
+        <blockquote><pre><code>licensed courtesy of http://developer.yahoo.com/yui/license.html</code></pre></blockquote>
+        <p><strong>Thirdly</strong>, YUI is mentioned also in class <code>Ext.event.Event</code> (file <code>classic/classic/overrides/event/Event.js</code>). Maybe something was copied there, maybe not.</p>
+
+        <p><strong>Additionally</strong>, a notice in the file <code>examples/classic/app/nested-loading/resources/json/products.json</code> (search for "YUI" there) suggest that early versions of the ExtJS library may have been just extended versions of YUI. So maybe some more ideas were copied from YUI.</p>
+        <p><strong>What's more</strong>, there are several additional mentions of YUI TODO finish this</p>
+
+        <p>The ancient version of the YUI library is (fortunately) not necessary for compiling ExtJS.</p>
+        <p>Homepage: <a href="https://yuilibrary.com/" target="_blank">https://yuilibrary.com/</a>
+        <p>Old homepage: <a href="http://developer.yahoo.com/yui" target="_blank">http://developer.yahoo.com/yui</a></p>
+        <p>License terms:
+                TODO: check it on archive.org,
+        </p>
 </li>
 <li>
-        <h3>JSON parser</h3>
+        <h3>Douglas Crockford's JSON.js - JSON parser</h3>
         <p>(Used by ExtJS)</p>
+        <p>The class <code>Ext.JSON</code> defined in file <code>packages/core/src/JSON.js</code> contains a modified version of Douglas Crockford's JSON parser.
+        <p>Location (original): <a href="http://www.JSON.org/js.html" target="_blank">http://www.JSON.org/js.html</a></p>
+        <p>Location (of newer versions of this library): <a href="https://github.com/douglascrockford/JSON-js" target="_blank">https://github.com/douglascrockford/JSON-js</a></p>
         <pre>
         TODO:
                 Location: http://www.JSON.org/js.html
-                        - ta lokalizacja jest już stara, nie ma tego adresu,
+                        - this location is old, this address returns error 404 currently,
+
+                 - check it on archive.org,
         </pre>
-        <p>License: Public Domain</p>
+        <p>License: "Public Domain"</p>
 </li>
 <li>
         <h3>flexible-js-formatting</h3>
@@ -165,24 +204,76 @@ either expressed or implied, of OpenLayers Contributors.
         <p>My hovercraft is full of eels.</p>
 </li>
 <li>
-        <h3>sparkline.js</h3>
+        <h3>jQuery Sparklines - sparkline.js</h3>
         <p>(Used by ExtJS)</p>
-        <p>micro charts</p>
+        <p>There are several classes in ExtJS that have "sparkline" in their name, maybe it was these classes that were based on <code>sparkline.js</code>. These classes are:</p>
+        <ul>
+                <li><code>Ext.sparkline.Bar</code></li>
+                <li><code>Ext.sparkline.BarBase</code></li>
+                <li><code>Ext.sparkline.Base</code></li>
+                <li><code>Ext.override.sparkline.Base</code> (defined in <code>classic/classic/overrides/sparkline/Base.js</code> and <code>modern/modern/overrides/sparkline/Base.js</code>)</li>
+                <li><code>Ext.sparkline.Box</code></li>
+                <li><code>Ext.sparkline.Bullet</code></li>
+                <li><code>Ext.sparkline.CanvasBase</code></li>
+                <li><code>Ext.sparkline.CanvasCanvas</code></li>
+                <li><code>Ext.sparkline.Discrete</code></li>
+                <li><code>Ext.sparkline.Line</code></li>
+                <li><code>Ext.sparkline.Pie</code></li>
+                <li><code>Ext.sparkline.RangeMap</code></li>
+                <li><code>Ext.sparkline.Shape</code></li>
+                <li><code>Ext.sparkline.TriState</code></li>
+                <li><code>Ext.sparkline.VmlCanvas</code></li>
+                <!-- TODO: check if this list is exhaustive. -->
+        </ul>
+        <p>These classes are defined inside directory <code>packages/core/src/sparkline</code> unless otherwise noted. It is unclear which version of sparkline they may be based on.</p>
+        <p><q>This <a href="http://jquery.com/" target="_blank">jQuery</a> plugin generates <a href="http://en.wikipedia.org/wiki/Sparkline" target="_blank">sparklines</a> (small inline charts) directly in the browser using data supplied either inline in the HTML, or via javascript.</q> (the plugin's webpage, talking about the library newest release).</p>
         <p>Location: <a href="http://omnipotent.net/jquery.sparkline" target="_blank">http://omnipotent.net/jquery.sparkline</a></p>
-        <p>Copyright (c) Splunk, Inc 2012</p>
-        <p>License: <q>Released under the New BSD License</q></p>
-        <h3>TODO: this library requires jquery, yet JQuery is never mentioned</h3>
+        <p><q>Contact: Gareth Watts</q></p>
+        <p>License (of version 1.2.1, other versions seem to have same licensing terms except for the copyright year):</p>
+<blockquote><pre><code>License: New BSD License
+
+Copyright (c) 2008, Splunk Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+    * Neither the name of Splunk Inc nor the names of its contributors may 
+      be used to endorse or promote products derived from this software without 
+      specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT 
+SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT 
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </code></pre></blockquote>
+        <!-- <h3>TODO: this library requires jquery, yet JQuery is never mentioned</h3> -->
 </li>
 <li>
         <h3>DeftJS</h3>
         <p>(Used by ExtJS)</p>
-        <p><q>Essential extensions for large-scale web and mobile application development with <a href="http://www.sencha.com/products/extjs/" target="_blank">Ext JS</a> and <a href="http://www.sencha.com/products/touch/" target="_blank">Sencha Touch</a>.</q>(Project homepage)
+        <p><q>Essential extensions for large-scale web and mobile application development with <a href="http://www.sencha.com/products/extjs/" target="_blank">Ext JS</a> and <a href="http://www.sencha.com/products/touch/" target="_blank">Sencha Touch</a>.</q>(project's homepage)
+        <p>There are several notices in source code about code imported from DeftJS. It is claimed that these classes were adapted from DeftJS:</p>
+        <ul>
+                <li>Ext.promise.Consequence</li>
+                <li>Ext.promise.Deferred</li>
+                <li>Ext.Deferred</li>
+                <!-- TODO: finish this -->
+        </ul>
         <p>Homepage: <a href="http://deftjs.org/" target="_blank">http://deftjs.org/</a></p>
-        <p>Repository: <a href="https://github.com/deftjs/DeftJS/" target="_blank">https://github.com/deftjs/DeftJS/</a></p>
-        <p>License:</p>
+        <p>Repository: <a href="https://github.com/deftjs/deftjs5" target="_blank">https://github.com/deftjs/deftjs5</a></p>
+        <p>License (of the newest version of this library, it is unclear which version of this library was used by ExtJS' authors):</p>
+        <p><code>Copyright (c) 2012-2014 [DeftJS Framework Contributors](http://deftjs.org)</code></p>
         <blockquote><code>
-                Copyright (c) 2012 DeftJS Framework Contributors<br><br>
-
                 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br><br>
 
                 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. <br><br>
@@ -191,8 +282,117 @@ either expressed or implied, of OpenLayers Contributors.
         </code></blockquote>
 
 </li>
+<li>
+        <h3>Possible: IEContentLoaded</h3>
+        <p>I have found the following note in the source code, in class <code>Ext.env.Ready</code> (defined in <code>packages/core/src/env/Ready.js</code>):
+<blockquote><pre><code>/* Customized implementation for Legacy IE. The default implementation is 
+ * configured for use with all other 'standards compliant' agents.
+ * References: http://javascript.nwbox.com/IEContentLoaded/
+ * licensed courtesy of http://developer.yahoo.com/yui/license.html
+ */</code></pre></blockquote>
+
+        <p>Among other things, there is some code at <a href="http://javascript.nwbox.com/IEContentLoaded/" target="_blank">http://javascript.nwbox.com/IEContentLoaded/</a>
+        <p>So maybe something was copied from there, maybe not.</p>
+        <p>The following notice appears in the source code:</p>
+<blockquote><pre><code>/*
+ *
+ * IEContentLoaded.js
+ *
+ * Author: Diego Perini (diego.perini at gmail.com) NWBOX S.r.l.
+ * Summary: DOMContentLoaded emulation for IE browsers
+ * Updated: 05/10/2007
+ * License: GPL
+ * Version: TBD
+ *
+ * Copyright (C) 2007 Diego Perini &amp; NWBOX S.r.l.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see http://javascript.nwbox.com/IEContentLoaded/GNU_GPL.txt.
+ *
+ */</code></pre></blockquote>
+        <p>The GNU General Public License version 2 can be found <a href="/LICENSE_GPL2.html">here</a>.</p>
+</li>
+
+<li>
+        <h3>Example font browser</h3>
+        <p>(included in ExtJS source code)</p>
+        <p>ExtJS source code includes some font browser (?) that is described to be generated by <a href="https://icomoon.io/app" target="_blank">IcoMoon</a> (see footer of <code>demo.html</code>). It is located in directory <code>resources/ext-watermark</code>. It is unclear which license it is distributed on.</p>
+        <!-- 
+                IMPORTANT
+                TODO
+                - includes some example font (developed by Sencha),
+                - was generated by https://icomoon.io/
+                - it is unclear whether such use was legal as IcoMoon's Terms of Use forbid such redistribution: http://icomoon.io/#termsofuse
+
+                TODO
+                - remove it from distributed ExtJS archive,
+        -->
+
+</li>
+
+<!-- 
+IMPORTANT
+Other packages used by Sencha:
+
+- I browsed and checked all subdirectories of ./packages,
+
+                packages/amf
+                        - looks like it's Sencha's property,
+                packages/charts
+                        - as well,
+
+                packages/core:
+                        packages/core$ cat Readme.md # core - Read Me
+
+                        This package contains the core features common to Sencha frameworks.
+                        packages/core$ 
+
+                packages/font-*
+                        - see below,
+                        
+                packages/google
+                        "detailedDescription": "This package provides Google APIs support.",
+
+                        - looks like it was written by Sencha,
+
+                        - links there lead to Google's Documentation, not source code,
+
+                packages/legacy
+                        "detailedDescription": "This package contains classes that are no longer supported",
+                        - looks like it was written by Sencha,
+
+                packages/soap
+                            "detailedDescription": "This package provides SOAP support for the Data package",
+
+                         - looks like it was written by Sencha,
+
+                packages/ux
+                        "detailedDescription": "This package contains extensions to Ext JS that should be considered as 'beta' or 'work in progress'. We hope they are useful 'as is' or serve as inspiration for more feature-rich work.",
+
+I browsed through most of ext-6.2.0-gpl.zip and didn't find anything more interesting. Didn't look into the examples folder though.
+
+TODO: search build/ext-all-debug.js for strings like "http", "license", etc.
+
+-->
 
 
+<!--
+***********************************************************
+
+There are also fonts used by Sencha (see below).
+
+***********************************************************
+-->
 
 
 
@@ -232,9 +432,7 @@ to widzę:
 <!--
         ***********************************************************
         
-                       Libraries used by OpenLayers
-
-                       - PBF and its dependencies
+          Libraries used by OpenLayers/(PBF and its dependencies)
 
         ***********************************************************
 -->
@@ -246,27 +444,83 @@ to widzę:
 
 <h2>Traccar web interface - fonts</h2>
 
-<p>Fonts used by the Traccar web interface:</p>
+<p>Third-party fonts used by the Traccar web interface:</p>
+
+<ol>
+<!--
+        ***********************************************************
+
+                        Fonts used by Sencha
+
+                source: ./LICENSE file in ext-6.2.0-gpl.zip
+        ***********************************************************
+-->
+<li>
+        <h3>Open Sans</h3>
+        <p>(used by ExtJS)</p>
+        <p><q>Open Sans is a clean and modern sans-serif typeface designed by <a href="http://en.wikipedia.org/wiki/Steve_Matteson" target="_blank">Steve Matteson</a> and commissioned by Google. It is especially designed for legibility across print, web, and mobile interfaces.</q>(Open Sans' website)</p>
+        <p>Homepage: <a href="https://www.opensans.com/" target="_blank">https://www.opensans.com/</a></p>
+        <p>Available to download at: <a href="https://www.opensans.com/download/open-sans.zip">https://www.opensans.com/download/open-sans.zip</a></p>
+        <p>Author: Steve Matteson</p>
+        <p>License: Apache License, version 2.0, text available <a href="/LICENSE_APACHE_2_0.txt" target="_blank">here</a>.
+
+</li>
+
+<li>
+        <h3>Silk icons</h3>
+        <p>(used by example code in ExtJS)</p>
+        <p>Homepage: <a href="http://www.famfamfam.com/lab/icons/silk/" target="_blank">http://www.famfamfam.com/lab/icons/silk/</a></p>
+        <p>License: Creative Commons Attribution 2.5 License.</p>
+        <p>Used by example code in ExtJS. There are following notes in directories <code>./examples/classic/shared/icons/fam/</code> and <code>./examples/kitchensink/classic/resources/images/icons/fam/</code>:</p>
+        <blockquote><pre><code>The icons in this folder are direct gif conversions of the fam fam fam silk icons.
+
+Please see http://www.famfamfam.com/lab/icons/silk/ for more details.</code></pre></blockquote>
+</li>
+<li>
 
 <pre><code>
-<!-- source: ./LICENSE file in ext-6.2.0-gpl.zip -->
-Library: Open-Sans
-License: Apache
-Location: http://www.fontsquirrel.com/fonts/open-sans
 
-Examples
-
-Library: Silk icons 
-License: Creative Commons Attribution 2.5 License. 
-Location: http://www.famfamfam.com/lab/icons/silk/
 
 From README.md:
 Icons are generously provided by [Font Awesome](http://fontawesome.io/) and [Icons8](https://icons8.com/). 
+
+<!-- fonts located manually -->
+
+        packages/font-awesome
+                - this is more interesting,
+
+                packages/font-awesome/resources/fonts
+                        IMPORTANT
+                        - this contains binary files of Font Awesome,
+                        - shouldn't be sources there?
+
+        packages/font-ext
+                ExtJS.eot  ExtJS.svg  ExtJS.ttf  ExtJS.woff
+
+                IMPORTANT
+                        - no source code located (?),
+
+        packages/font-ios
+        packages/font-pictos
+
+        EDIT: pon, 23 kwi 2018, 18:21:11 CEST
+        - these files are also related to these fonts,
+
+                sass/etc/font-awesome-variables.scss 
+                sass/etc/font-ext-variables.scss 
+                sass/etc/font-ios-variables.scss 
+                sass/etc/font-pictos-variables.scss 
+
+
 </code></pre>
+</li>
+
+</ol>
 
 <h2>Traccar web interface - other thanks</h2>
 
 <code>
+From README.md:
 We are also using [BrowserStack](https://www.browserstack.com/) to test compatibility with various platforms and browser versions.
 </code>
 
