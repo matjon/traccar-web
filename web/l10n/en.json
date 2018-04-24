@@ -406,5 +406,8 @@
     "categoryShip": "Ship",
     "categoryTractor": "Tractor",
     "categoryTruck": "Truck",
-    "categoryVan": "Van"
+    "categoryVan": "Van",
+    "aboutDescription": "Modern GPS Tracking Platform",
+    "aboutAdvertisement": "Professional, Secure, Open Source",
+    "aboutOtherAuthorsNote": "other authors (see copyright notices in source code and git history)"
 }
