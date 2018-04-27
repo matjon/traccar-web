@@ -161,8 +161,8 @@ Ext.define('Traccar.view.map.MapController', {
         // Function based on view/ReportController.js -> onReportClick(button)
 
         // Show a spinner over the map
-        var el = Ext.get('mainMapView');
-        el.mask(Strings.sharedLoading);
+        var mainMapView = Ext.get('mainMapView');
+        mainMapView.mask(Strings.sharedLoading);
 
         Ext.getStore('ReportRoute').removeAll();
         Ext.getStore('ReportRoute').showMarkers = true;
@@ -174,7 +174,7 @@ Ext.define('Traccar.view.map.MapController', {
             },
             callback: function () {
                 // Hide the spinner
-                el.unmask();
+                mainMapView.unmask();
             }
         });
     },
