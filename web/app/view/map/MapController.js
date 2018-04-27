@@ -50,7 +50,7 @@ Ext.define('Traccar.view.map.MapController', {
             Traccar.app.isMobile() && !Traccar.app.getBooleanAttributePreference('ui.disableReport'));
         this.lookupReference('showEventsButton').setVisible(
             Traccar.app.isMobile() && !Traccar.app.getBooleanAttributePreference('ui.disableEvents'));
-        this.setTimes('today');
+        this.chosenReportPeriod = 'today';
     },
 
     showReports: function () {
@@ -159,9 +159,19 @@ Ext.define('Traccar.view.map.MapController', {
 
     displayDeviceHistory: function (deviceId) {
         // Function based on view/ReportController.js -> onReportClick(button)
+        var mainMapView;
+
+        /*
+         * The meaning of the chosen report period may have changed if the
+         * user has the browser window open through 24:00.
+         * E.g. 'today' may have shifted from June 25th to June 26th.
+         * Therefore, we have to call setTimes() every time we display the
+         * device history.
+         */
+        this.setTimes(this.chosenReportPeriod);
 
         // Show a spinner over the map
-        var mainMapView = Ext.get('mainMapView');
+        mainMapView = Ext.get('mainMapView');
         mainMapView.mask(Strings.sharedLoading);
 
         Ext.getStore('ReportRoute').removeAll();
@@ -193,8 +203,7 @@ Ext.define('Traccar.view.map.MapController', {
     },
 
     onMyReportPeriodChange: function (combobox, newValue) {
-        //this.chosenReportPeriod = newValue;
-        this.setTimes(newValue);
+        this.chosenReportPeriod = newValue;
         this.displayCurrentDeviceHistory();
     },
 
