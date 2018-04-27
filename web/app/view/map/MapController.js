@@ -179,12 +179,7 @@ Ext.define('Traccar.view.map.MapController', {
         });
     },
 
-    onMyReportPeriodChange: function (combobox, newValue) {
-        this.setTimes(newValue);
-        this.myRefresh();
-    },
-
-    myRefresh: function () {
+    displayCurrentDeviceHistory: function () {
         var deviceId = null;
 
         if (this.selectedDevice && this.selectedDevice !== null) {
@@ -195,5 +190,15 @@ Ext.define('Traccar.view.map.MapController', {
         }
 
         this.displayDeviceHistory(deviceId);
+    },
+
+    onMyReportPeriodChange: function (combobox, newValue) {
+        //this.chosenReportPeriod = newValue;
+        this.setTimes(newValue);
+        this.displayCurrentDeviceHistory();
+    },
+
+    myRefresh: function () {
+        this.displayCurrentDeviceHistory();
     }
 });
