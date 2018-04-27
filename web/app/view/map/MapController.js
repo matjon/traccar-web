@@ -20,7 +20,8 @@ Ext.define('Traccar.view.map.MapController', {
     alias: 'controller.map',
 
     requires: [
-        'Traccar.GeofenceConverter'
+        'Traccar.GeofenceConverter',
+        'Traccar.view.dialog.CustomReportPeriod'
     ],
 
     config: {
