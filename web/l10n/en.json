@@ -366,6 +366,7 @@
     "reportExport": "Export",
     "reportPeriod": "Period",
     "reportCustom": "Custom",
+    "reportCustomTitle": "Custom report period",
     "reportToday": "Today",
     "reportYesterday": "Yesterday",
     "reportThisWeek": "This Week",

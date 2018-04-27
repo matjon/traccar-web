@@ -147,6 +147,8 @@ Ext.define('Traccar.view.map.MapController', {
                 from.setMonth(from.getMonth() - 1);
                 to.setDate(1);
                 break;
+            case 'custom':
+                return;
             default:
                 break;
         }
@@ -203,8 +205,24 @@ Ext.define('Traccar.view.map.MapController', {
     },
 
     onMyReportPeriodChange: function (combobox, newValue) {
-        this.chosenReportPeriod = newValue;
-        this.displayCurrentDeviceHistory();
+        if (newValue == 'custom') {
+            // Based on ReportController.js -> onConfigureClick()
+            var dialog = Ext.create('Traccar.view.dialog.CustomReportPeriod');
+            dialog.callingPanel = this;
+            if (this.from !== undefined) {
+                dialog.lookupReference('fromDateField').setValue(this.from);
+                dialog.lookupReference('fromTimeField').setValue(this.from);
+            }
+            if (this.to !== undefined) {
+                dialog.lookupReference('toDateField').setValue(this.to);
+                dialog.lookupReference('toTimeField').setValue(this.to);
+            }
+            dialog.show();
+        } else {
+            this.chosenReportPeriod = newValue;
+
+            this.displayCurrentDeviceHistory();
+        }
     },
 
     myRefresh: function () {

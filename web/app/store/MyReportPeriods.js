@@ -2,6 +2,7 @@
  * Copyright 2017 Anton Tananaev (anton@traccar.org)
  * Copyright 2017 Andrey Kunitsyn (andrey@traccar.org)
  * Copyright 2018 Mateusz Jończyk (mat.jonczyk@o2.pl)
+ *      Mateusz's work was funded by Partner Security (www.partnersecurity.pl).
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,5 +40,8 @@ Ext.define('Traccar.store.MyReportPeriods', {
     }, {
         key: 'previousMonth',
         name: Strings.reportPreviousMonth
+    }, {
+        key: 'custom',
+        name: Strings.reportCustom
     }]
 });
