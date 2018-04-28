@@ -206,6 +206,10 @@ Ext.define('Traccar.view.map.MapController', {
     },
 
     onMyReportPeriodChange: function (combobox, newValue) {
+        if (newValue === null || newValue === '') {
+            return;
+        }
+
         if (newValue == 'custom') {
             // Based on ReportController.js -> onConfigureClick()
             var dialog = Ext.create('Traccar.view.dialog.CustomReportPeriod');
@@ -224,6 +228,23 @@ Ext.define('Traccar.view.map.MapController', {
 
             this.displayCurrentDeviceHistory();
         }
+
+
+        /*
+         * The user may re-select an existing value from this drop-down menu.
+         * In such a case, it may be beneficial to refresh the view.
+         * However, intercepting such an event is tricky as neither 'change' nor
+         * 'select' fire in this situation.
+         *
+         * Therefore, we apply a trick: we deselect the currently selected value
+         * so that no value is selected.
+         * We also set the text on the combobox manually with
+         * setValueNotFoundText().
+         */
+        combobox.suspendEvents(false);
+        combobox.setValueNotFoundText('Wybierz okres:');
+        combobox.setValue('');
+        combobox.resumeEvents(true);
     },
 
     myRefresh: function () {

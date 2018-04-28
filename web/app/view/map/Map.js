@@ -48,15 +48,11 @@ Ext.define('Traccar.view.map.Map', {
             store: 'MyReportPeriods',
             displayField: 'name',
             valueField: 'key',
-            value: 'today',
+            value: '',
+            valueNotFoundText: 'Wybierz okres:',
             editable: false,
             forceSelection: true,
             listeners: {
-                /*
-                 * TODO: The user may re-select an existing value from this drop-down menu.
-                 *       In such a case, it may be beneficial to refresh the view.
-                 *       However, intercepting such an event is very tricky.
-                 */
                 change: 'onMyReportPeriodChange'
             }
         }, {
